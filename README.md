@@ -2,10 +2,20 @@
 
 ![demo](media/gazebo_demo.gif)
 
-A 4-DOF SCARA manipulator designed in Onshape and taken through a complete
-simulation pipeline: URDF export, analytic kinematics, Gazebo + `ros2_control`,
-and step-response PID tuning. Every claim below is backed by a reproducible
-script in this repository. Simulation only; no hardware was built.
+
+
+
+
+
+## Overview
+This project takes a 4-DOF SCARA arm (RRPR) from CAD to a working closed-loop
+simulation. The arm was designed in Onshape and exported to URDF. Its kinematics
+(FK, analytic IK, Jacobian) were derived and checked against the simulator's
+transform tree. The arm was then driven in Gazebo through `ros2_control`, and
+the joint PID gains were tuned from measured step responses.
+The aim was to build the full pipeline end to end and verify each stage with a
+reproducible script, rather than to propose a new method. It is simulation only.
+
 
 **Stack:** Onshape · ROS 2 Humble · Gazebo Classic 11 · `ros2_control` · Python (NumPy, Matplotlib)
 
