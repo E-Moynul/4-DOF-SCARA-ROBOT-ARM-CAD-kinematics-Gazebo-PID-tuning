@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape document_id: 380d47dc15041a993e935082 -->
+<robot name="scara">
+  <!-- Link base_link -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0 -0 0.0342676" rpy="0 0 0"/>
+      <mass value="1.40467"/>
+      <inertia ixx="0.00428487" ixy="0" ixz="0" iyy="0.00428487" iyz="0" izz="0.00349236"/>
+    </inertial>
+    <!-- Part base_link -->
+    <visual>
+      <origin xyz="-0 -0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/base_link.stl"/>
+      </geometry>
+      <material name="base_link_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 -0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/base_link.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link link_1 -->
+  <link name="link_1">
+    <inertial>
+      <origin xyz="0.078594 -4.1866e-08 -0.00559745" rpy="0 0 0"/>
+      <mass value="0.204383"/>
+      <inertia ixx="0.000116409" ixy="1.37e-10" ixz="4.71998e-05" iyy="0.00132136" iyz="1.68e-10" izz="0.00138953"/>
+    </inertial>
+    <!-- Part link_1 -->
+    <visual>
+      <origin xyz="0 -0 0.015" rpy="3.14159 0 -0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/link_1.stl"/>
+      </geometry>
+      <material name="link_1_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0 0.015" rpy="3.14159 0 -0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/link_1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link link_2 -->
+  <link name="link_2">
+    <inertial>
+      <origin xyz="0.0638962 -2.2978e-08 0.00238646" rpy="0 0 0"/>
+      <mass value="0.0892989"/>
+      <inertia ixx="1.76274e-05" ixy="2.4e-11" ixz="-1.88339e-06" iyy="0.000306339" iyz="-1.8e-11" izz="0.000317061"/>
+    </inertial>
+    <!-- Part link_2 -->
+    <visual>
+      <origin xyz="0 -0 0.015" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/link_2.stl"/>
+      </geometry>
+      <material name="link_2_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0 0.015" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/link_2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link z_rod -->
+  <link name="z_rod">
+    <inertial>
+      <origin xyz="-0 0 -0.0848207" rpy="0 0 0"/>
+      <mass value="0.170595"/>
+      <inertia ixx="0.000570892" ixy="0" ixz="0" iyy="0.000570892" iyz="0" izz="8.51804e-06"/>
+    </inertial>
+    <!-- Part z_rod -->
+    <visual>
+      <origin xyz="-0 0 0.015" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/z_rod.stl"/>
+      </geometry>
+      <material name="z_rod_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0.015" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/z_rod.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link tool_flange -->
+  <link name="tool_flange">
+    <inertial>
+      <origin xyz="-0 -0 -0.000679004" rpy="0 0 0"/>
+      <mass value="0.0144407"/>
+      <inertia ixx="1.07047e-06" ixy="-0" ixz="0" iyy="1.0678e-06" iyz="0" izz="1.91439e-06"/>
+    </inertial>
+    <!-- Part tool_flange -->
+    <visual>
+      <origin xyz="0 -0 -0.005" rpy="0 -0 -0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/tool_flange.stl"/>
+      </geometry>
+      <material name="tool_flange_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0 -0.005" rpy="0 -0 -0"/>
+      <geometry>
+        <mesh filename="package://scara_description/meshes/tool_flange.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from z_rod to tool_flange -->
+  <joint name="joint4" type="revolute">
+    <origin xyz="-0 0 0.015" rpy="3.14159 -0 -0"/>
+    <parent link="z_rod"/>
+    <child link="tool_flange"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="2" lower="-3.1416" upper="3.1416"/>
+  </joint>
+  <!-- Joint from link_2 to z_rod -->
+  <joint name="joint3_z" type="prismatic">
+    <origin xyz="0.15 -0 0.012" rpy="-0 0 -0"/>
+    <parent link="link_2"/>
+    <child link="z_rod"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="0.5" lower="0" upper="0.1"/>
+  </joint>
+  <!-- Joint from link_1 to link_2 -->
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0.2 -0 -0.035" rpy="-0 0 0"/>
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="2" lower="-2.531" upper="2.531"/>
+  </joint>
+  <!-- Joint from base_link to link_1 -->
+  <joint name="joint_1" type="revolute">
+    <origin xyz="-0 -0 0.135" rpy="-3.14159 -0 -0"/>
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="2" lower="-2.618" upper="2.618"/>
+  </joint>
+
+  <!-- World anchor for Gazebo -->
+  <link name="world"/>
+  <joint name="world_fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ros2_control: effort command, position+velocity state -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="joint_1">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_2">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint3_z">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint4">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>@CONTROLLERS_YAML@</parameters>
+    </plugin>
+  </gazebo>
+</robot>

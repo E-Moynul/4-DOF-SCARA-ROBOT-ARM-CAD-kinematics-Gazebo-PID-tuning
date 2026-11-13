@@ -1,0 +1,5 @@
+label,joint,step,rise_s,overshoot_pct,settle_s,sse
+final_j1,joint_1,0.3,0.356,3.1,0.939,-1.16e-06
+final_j2,joint_2,0.3,0.542,0.0,0.922,5.86e-07
+final_z,joint3_z,0.03,0.163,0.6,0.302,-1.03e-04
+final_j4,joint4,0.5,0.106,0.0,0.192,-3.78e-12
