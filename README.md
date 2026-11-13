@@ -98,4 +98,4 @@ Payload tests at the 500 g design target, Cartesian trajectory tracking,
 MoveIt 2 integration (custom IK plugin), and comparison with learned controllers.
 
 ## Author
-Rifat · [Portfolio](https://e-moynul.github.io) · MIT License
+Moynul Rifat · [Portfolio](https://e-moynul.github.io) · MIT License
